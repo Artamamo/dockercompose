@@ -4,10 +4,10 @@
 
 參考資料
 
-[github](https://github.com/twtrubiks/docker-tutorial#docker-compose-networks)
+[twtrubiks`s github](https://github.com/twtrubiks/docker-tutorial#docker-compose-networks)
 
-```cmd: 
-
+cmd: 
+```
 	docker-compose up -d
 ```
 
