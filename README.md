@@ -1,48 +1,11 @@
-code:
+#Docker-compose
 
-version: '3.5'
-services:
-        db:
-                image: mysql:5.7
-                environment:
-                        MYSQL_ROOT_PASSWORD: somewordpress
-                        MYSQL_DATABASE: somewordpress
-                        MYSQL_USER: wordpress
-                        MYSQL_PASSWORD: wordpress
-                volumes:
-                        - db_data:/var/lib/mysql
-                restart: always
-                networks:
-                        - proxy
-        wordpress:
-                depends_on:
-                        - db
-                image: wordpress:latest
-                ports:
-                        - "8000:80"
-                restart: always
-                environment:
-                        WORDPRESS_DB_HOST: db:3306
-                        WORDPRESS_DB_USER: wordpress
-                        WORDPRESS_DB_PASSWORD: wordpress
-                networks:
-                        - proxy
-        web:
-                build: ./api
-                command: python manage.py runserver 0.0.0.0:8282
-                restart: always
-                volumes:
-                        - api_data:/docker_api
-                ports:
-                        - "8181:8181"
-                depends_on:
-                        - db
-                networks:
-                        - proxy
-volumes:
-        api_data:
-        db_data:
-networks:
-        proxy:
-                # external:
-                name: my_network
+![](https://i.imgur.com/gDcSwcs.png)
+
+參考資料
+
+[github](https://github.com/twtrubiks/docker-tutorial#docker-compose-networks)
+
+cmd : docker-compose up -d
+
+->![](http://127.0.0.1:8000/)
